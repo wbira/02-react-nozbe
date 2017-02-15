@@ -7,9 +7,10 @@ import MainApp from './MainApp'
 
 render(
   <Router history={browserHistory}>
-    <Route path='/' component={MainApp} />
-    <Route path='/calendar' component={Calendar} />
-    <Route path='/tasks' component={Tasks} />
+    <Route path='/' component={MainApp}>
+      <Route path='/calendar' component={Calendar} />
+      <Route path='/tasks' component={Tasks} />
+    </Route>
   </Router>,
   document.getElementById('app')
 )
