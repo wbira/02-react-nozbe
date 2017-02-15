@@ -1,5 +1,6 @@
 import React from 'react'
 import Todo from './Todo'
+import _ from 'lodash'
 
 export default React.createClass({
   getInitialState () {
@@ -12,11 +13,22 @@ export default React.createClass({
     }
   },
 
+  markTaskAsCompleted (taskId) {
+    var task = _.find(this.state.todos, todo => todo.id === taskId)
+    task.completed = !task.completed
+
+    this.setState({ todos: this.state.todos })
+  },
+
   render () {
     return (
       <div>
         <h1>Todos</h1>
-        {this.state.todos.map(todo => <Todo key={todo.id} text={todo.text} />)}
+        {this.state.todos.map(todo =>
+          <Todo
+            key={todo.id} {...todo}
+            markCompleted={() => this.markTaskAsCompleted(todo.id)} />)
+        }
       </div>
     )
   }
