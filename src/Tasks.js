@@ -1,4 +1,5 @@
 import React from 'react'
+import Todo from './Todo'
 
 export default React.createClass({
   getInitialState () {
@@ -15,7 +16,7 @@ export default React.createClass({
     return (
       <div>
         <h1>Todos</h1>
-        {this.state.todos.map(todo => todo.text)}
+        {this.state.todos.map(todo => <Todo key={todo.id} text={todo.text} />)}
       </div>
     )
   }
