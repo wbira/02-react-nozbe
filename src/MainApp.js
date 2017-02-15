@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router'
+import NavLink from './Utils/NavLink'
 
 export default React.createClass({
   propTypes: {
@@ -7,14 +7,17 @@ export default React.createClass({
   },
   render () {
     return (
-      <div>
-        <div>
+      <div className='mainApp'>
+        <div className='navbar'>
           <nav>
-            <Link to='/calendar'>Calendar</Link>
-            <Link to='/tasks'>Tasks</Link>
+            <NavLink onlyActiveOnIndex to='/'>Main</NavLink>
+            <NavLink to='/calendar'>Calendar</NavLink>
+            <NavLink to='/tasks'>Tasks</NavLink>
           </nav>
         </div>
-        {this.props.children}
+        <div className='taskList'>
+          {this.props.children}
+        </div>
       </div>
     )
   }
